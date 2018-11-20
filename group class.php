@@ -19,7 +19,7 @@ class Group{
     public function getUsers()
     {
     //Returns a list of userIDs for users in the group.
-    return get_users_from_group($this->$groupID);
+    return get_users_from_group($this->groupID);
     }
 }
 ?>`
