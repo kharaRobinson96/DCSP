@@ -7,7 +7,7 @@ class Group{
 		
 	
 		//if this were a class for a ball, name this function createNewBall
-		public static function createNewObject($arg1, $arg2, . . . $argN) {
+		public static function createNewObject($arg1) {
 			//note: do NOT pass the classID as an argument
 			//to make a new object of this class, call this in your code (this is for frontend):
 			// $object = ClassName::createNewObject();
@@ -16,9 +16,7 @@ class Group{
 			$newObject = new ClassName();
 
 			$newObject->attribute1 = arg1;
-			$newObject->attribute1 = arg1;
-			. . .
-			$attributeN->argN;
+			
 
 			// there should be a database function similarly named
 			$newObject-> classID = create_object(ATTRIBUTES)
@@ -37,7 +35,7 @@ class Group{
 			$newObject->objectID = $objectID;
 			
 			// there should be a database function similarly named
-			$details = get_object_details_from_id($objectID);
+			$details = get_object_details_from_id($groupID);
 
 			$newObject->attribute1 = $details["attribute1"];
 			
