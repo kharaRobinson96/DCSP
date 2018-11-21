@@ -1,45 +1,35 @@
 <?php
 include("db_functions.php");
 class Group{
-    private $objectID = 0; //any negative number will work
-	private $objectName = "";
-	private $attribute1 ="";
+    private $grouptID = 0; //any negative number will work
+	private $groupName = "";
 		
 	
 		//if this were a class for a ball, name this function createNewBall
-		public static function createNewObject($arg1) {
+		public static function createNewObject() {
 			//note: do NOT pass the classID as an argument
 			//to make a new object of this class, call this in your code (this is for frontend):
 			// $object = ClassName::createNewObject();
-
 			// make an empty object
-			$newObject = new ClassName();
-
-			$newObject->attribute1 = arg1;
+			$newObject = new Group();
+			$newObject->groupName = groupName;
 			
-
 			// there should be a database function similarly named
-			$newObject-> classID = create_object(ATTRIBUTES)
-
+			$newObject-> groupID = create_object()
 			return $newObject;
 		}
-
 		public static function retrieveGroup($groupID) {
 			//note: you MUST pass the classID as THE ONLY argument
 			//to make a new object of this class, call this in your code (this is for frontend):
 			// $object = ClassName::retrieveObject();
-
 			// make an empty object
-			$Object = new ClassName();
-
-			$newObject->objectID = $objectID;
+			$Object = new Group();
+			$newObject->groupID = $groupID;
 			
 			// there should be a database function similarly named
 			$details = get_object_details_from_id($groupID);
-
-			$newObject->attribute1 = $details["attribute1"];
+			$newObject->groupName = $details["groupName"];
 			
-
 			return $newObject;
 		}
     
