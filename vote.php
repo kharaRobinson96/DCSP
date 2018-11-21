@@ -40,5 +40,12 @@ class Vote {
 			
 			return $newObject;
 		}
-    public function
+    public function getPoll(){
+	    return get_votes_for_option($pollOptionID);
+    }
+	public function getVote($pollOptionID, $userID){
+		return $this-> cast_vote($this->pollOptionID, $userID);
+	}
+}
+
 ?>
