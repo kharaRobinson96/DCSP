@@ -4,39 +4,34 @@ class Poll {
     private $pollID="";
     private $groupID="";
     
-    //if this were a class for a ball, name this function createNewBall
-		public static function createNewObject() {
-			//note: do NOT pass the classID as an argument
-			//to make a new object of this class, call this in your code (this is for frontend):
-			// $object = ClassName::createNewObject();
-			// make an empty object
-			$newObject = new Poll();
+		public static function createNewPoll($pollID,$groupID) {
 			
-			// there should be a database function similarly named
-			$newObject-> pollID = create_object()
-			return $newObject;
+            $newPoll = new Poll();
+            $newPoll->pollID=$pollID;
+            $newPoll->groupID=$groupID;
+			
+			$newPoll-> pollID = create_poll($pollID,$groupID);
+			return $newPoll;
 		}
-		public static function retrieveObject($objectID) {
-			//note: you MUST pass the classID as THE ONLY argument
-			//to make a new object of this class, call this in your code (this is for frontend):
-			// $object = ClassName::retrieveObject();
-			// make an empty object
-			$Object = new Poll();
-			$newObject->pollID = $pollID;
+		public static function retrievePoll($pollID) {
 			
-			// there should be a database function similarly named
-			$details = get_object_details_from_id($pollID);
-			$newObject->groupID = $details["groupID"];
-			return $newObject;
+			$Poll = new Poll();
+			$newPoll->pollID = $pollID;
+			
+			$details = get_poll_details_from_id($pollID);
+            $newPoll->groupID = $details["groupID"];
+            $newPoll->pollID = $details["pollID"];
+
+			return $newPoll;
 		}
 
     public function isOpen()
     {
         //Returns true if the poll is open, false if it is closed.
-        if($this->poll()==0 ){
+        if($this->is_poll_open($pollID)==false ){
             return false;
         }
-        if($this->poll()==1){
+        if($this->is_poll_open($pollID)==true){
             return true;
         }
 
@@ -64,10 +59,7 @@ class Poll {
     public function usersVotedList() 
     {
         //Retrieves which users have voted.
-        get_votes_for_option($this->pollOptionID);
-        return get_array("SELECT  * 
-                        FROM Votes 
-                        WHERE useerID = $userID");
+        users_who_voted($this->pollID);
     }
     
 }
