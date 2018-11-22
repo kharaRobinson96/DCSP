@@ -4,39 +4,42 @@ class Group{
     private $grouptID = 0; //any negative number will work
 	private $groupName = "";
 		
-	
-		//if this were a class for a ball, name this function createNewBall
-		public static function createNewObject() {
-			//note: do NOT pass the classID as an argument
-			//to make a new object of this class, call this in your code (this is for frontend):
-			// $object = ClassName::createNewObject();
-			// make an empty object
-			$newObject = new Group();
-			$newObject->groupName = groupName;
+			public static function createNewGroup($groupID, $groupName) {
 			
-			// there should be a database function similarly named
-			$newObject-> groupID = create_object()
-			return $newObject;
+			$newGroup = new Group();
+			$newGroup->groupName = groupName;
+			$newGroup->groupID = groupID;
+			
+			$newGroup-> groupID = create_group($groupID, $groupName);
+
+			return $newGroup;
 		}
 		public static function retrieveGroup($groupID) {
-			//note: you MUST pass the classID as THE ONLY argument
-			//to make a new object of this class, call this in your code (this is for frontend):
-			// $object = ClassName::retrieveObject();
-			// make an empty object
-			$Object = new Group();
-			$newObject->groupID = $groupID;
 			
-			// there should be a database function similarly named
-			$details = get_object_details_from_id($groupID);
-			$newObject->groupName = $details["groupName"];
+			$Group = new Group();
+
+			$newGroup->groupID = $groupID;
+			$newGroup->groupName=$groupName;
 			
-			return $newObject;
+			$details = get_group_details_from_id($groupID);
+			$newGroup->groupName = $details["groupName"];
+			$newGroup->groupID = $details["groupID"];
+
+			return $newGroup;
 		}
     
     public function getUsers()
     {
     //Returns a list of userIDs for users in the group.
     return get_users_from_group($this->groupID);
-    }
+	}
+
+	public function joinGroup($groupID){
+		add_user_to_group($this->userID,$groupID);
+	}
+	public function leaveGroup($groupID){
+		remove_user_from_group($this->userID,$groupID);
+
+	}
 }
 ?>`
